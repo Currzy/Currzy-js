@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
-import { XMLParser } from 'fast-xml-parser';
+import fetch from "node-fetch";
+import { XMLParser } from "fast-xml-parser";
 
 export interface Rate {
   code: string;
@@ -8,16 +8,79 @@ export interface Rate {
   vunitRate: number;
 }
 
+interface CbrfValute {
+  CharCode: string;
+  Nominal: string;
+  Name: string;
+  Value: string;
+}
+
+interface CbrfData {
+  ValCurs: {
+    Valute: CbrfValute[] | CbrfValute;
+  };
+}
+
 export const AVAILABLE_CURRENCIES = [
-  'AUD','AZN','DZD','GBP','AMD','BHD','BYN','BGN','BOB','BRL',
-  'HUF','VND','HKD','GEL','DKK','AED','USD','EUR','EGP','INR',
-  'IDR','IRR','KZT','CAD','QAR','KGS','CNY','CUP','MDL','MNT',
-  'NGN','NZD','NOK','OMR','PLN','SAR','RON','XDR','SGD','TJS',
-  'THB','BDT','TRY','TMT','UZS','UAH','CZK','SEK','CHF','ETB',
-  'RSD','ZAR','KRW','JPY','MMK','RUB'
+  "AUD",
+  "AZN",
+  "DZD",
+  "GBP",
+  "AMD",
+  "BHD",
+  "BYN",
+  "BGN",
+  "BOB",
+  "BRL",
+  "HUF",
+  "VND",
+  "HKD",
+  "GEL",
+  "DKK",
+  "AED",
+  "USD",
+  "EUR",
+  "EGP",
+  "INR",
+  "IDR",
+  "IRR",
+  "KZT",
+  "CAD",
+  "QAR",
+  "KGS",
+  "CNY",
+  "CUP",
+  "MDL",
+  "MNT",
+  "NGN",
+  "NZD",
+  "NOK",
+  "OMR",
+  "PLN",
+  "SAR",
+  "RON",
+  "XDR",
+  "SGD",
+  "TJS",
+  "THB",
+  "BDT",
+  "TRY",
+  "TMT",
+  "UZS",
+  "UAH",
+  "CZK",
+  "SEK",
+  "CHF",
+  "ETB",
+  "RSD",
+  "ZAR",
+  "KRW",
+  "JPY",
+  "MMK",
+  "RUB",
 ] as const;
 
-export type CurrencyCode = typeof AVAILABLE_CURRENCIES[number];
+export type CurrencyCode = (typeof AVAILABLE_CURRENCIES)[number];
 
 export function assertCurrency(code: string): asserts code is CurrencyCode {
   if (!AVAILABLE_CURRENCIES.includes(code as CurrencyCode)) {
@@ -37,21 +100,23 @@ export class CbrfProvider {
     const xml = await res.text();
 
     const parser = new XMLParser();
-    const data = parser.parse(xml);
+    const data: CbrfData = parser.parse(xml) as CbrfData;
 
-    const items: any[] = data.ValCurs.Valute;
+    const items: CbrfValute[] = Array.isArray(data.ValCurs.Valute)
+      ? data.ValCurs.Valute
+      : [data.ValCurs.Valute];
     this.rates = {} as Record<CurrencyCode, Rate>;
 
     for (const item of items) {
       const nominal = Number(item.Nominal);
-      const value = parseFloat(item.Value.replace(',', '.'));
+      const value = parseFloat(item.Value.replace(",", "."));
       const vunitRate = value / nominal;
 
       const rate: Rate = {
         code: item.CharCode,
         nominal,
         value,
-        vunitRate
+        vunitRate,
       };
 
       if (this.availableCurrencies.includes(rate.code as CurrencyCode)) {
@@ -63,13 +128,13 @@ export class CbrfProvider {
       code: "RUB",
       nominal: 1,
       value: 1,
-      vunitRate: 1
+      vunitRate: 1,
     };
 
     this.lastUpdate = new Date();
   }
 
-  getRate(code: string, base: string = 'USD'): number {
+  getRate(code: string, base: string = "USD"): number {
     assertCurrency(code);
     assertCurrency(base);
 
@@ -89,7 +154,7 @@ export class CbrfProvider {
     return (amount * fromRateInRub) / toRateInRub;
   }
 
-  getAllRates(baseCode: string = 'USD'): Record<CurrencyCode, number> {
+  getAllRates(baseCode: string = "USD"): Record<CurrencyCode, number> {
     assertCurrency(baseCode);
 
     const result: Partial<Record<CurrencyCode, number>> = {};

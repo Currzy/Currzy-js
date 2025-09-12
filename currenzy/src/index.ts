@@ -1,4 +1,4 @@
-import { CbrfProvider } from './providers/cbrf';
+import { CbrfProvider } from "./providers/cbrf";
 
 export { CbrfProvider };
 
@@ -6,8 +6,8 @@ export class Currenzy {
   provider: CbrfProvider;
 
   constructor(providerName: string) {
-    if (providerName === 'cbrf') this.provider = new CbrfProvider();
-    else throw new Error('Unknown provider');
+    if (providerName === "cbrf") this.provider = new CbrfProvider();
+    else throw new Error("Unknown provider");
   }
 
   updateRates() {
@@ -23,7 +23,7 @@ export class Currenzy {
   }
 
   getAllRatesTo(code?: string): Record<string, number | null> {
-    return this.provider.getAllRates(code)
+    return this.provider.getAllRates(code);
   }
 
   getLastUpdate() {
