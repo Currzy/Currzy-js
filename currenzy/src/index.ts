@@ -1,4 +1,4 @@
-import { CbrfProvider } from "./providers/cbrf";
+import { CbrfProvider } from "./providers/cbrf.ts";
 
 export { CbrfProvider };
 

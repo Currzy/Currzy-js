@@ -7,7 +7,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "ts-node tests/index.test.ts",
+    "test": "node --loader ts-node/esm -r tsconfig-paths/register tests/index.test.ts",
     "lint": "eslint ./src --fix && prettier --check ./src"
   },
   "repository": {
@@ -38,9 +38,11 @@
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.0.0",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.6.3"
   }
 }

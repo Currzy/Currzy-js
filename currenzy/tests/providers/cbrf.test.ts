@@ -1,24 +1,26 @@
-import { Currenzy } from '../../src';
+// eslint-disable-next-line import/no-relative-parent-imports
+import { Currenzy } from "../../src/index.ts";
+import chalk from 'chalk';
 
 export async function testCbrfProvider() {
     const api = new Currenzy('cbrf');
     await api.updateRates();
 
-    console.log('\n===== Все курсы относительно USD =====');
+    console.log(chalk.cyan('\n===== Все курсы относительно USD ====='));
     const ratesToUSD = api.getAllRatesTo('USD');
     console.table(ratesToUSD);
 
-    console.log('\n===== Все курсы относительно RUB =====');
+    console.log(chalk.cyan('\n===== Все курсы относительно RUB ====='));
     const ratesToRUB = api.getAllRatesTo('RUB');
     console.table(ratesToRUB);
 
-    console.log('===== Проверка отдельных курсов =====');
+    console.log(chalk.cyan('===== Проверка отдельных курсов ====='));
     const testCurrencies = ['USD', 'EUR', 'RUB', 'AMD', 'GBP', 'JPY'];
     for (const code of testCurrencies) {
         console.log(`${code} ->`, api.getRate(code).toFixed(4));
     }
 
-    console.log('\n===== Проверка конверсий =====');
+    console.log(chalk.cyan('\n===== Проверка конверсий ====='));
     const conversionTests: [number, string, string][] = [
         [100, 'USD', 'RUB'],
         [1000, 'RUB', 'USD'],
@@ -37,6 +39,6 @@ export async function testCbrfProvider() {
         );
     }
 
-    console.log('\n===== Последнее обновление =====');
+    console.log(chalk.cyan('\n===== Последнее обновление ====='));
     console.log(api.getLastUpdate());
 }
