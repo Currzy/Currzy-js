@@ -1,4 +1,5 @@
-export default {
+// .eslintrc.cjs
+module.exports = {
     parser: "@typescript-eslint/parser",
     parserOptions: {
         ecmaVersion: 2024,
