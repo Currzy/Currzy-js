@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": { "@src/*": ["src/*"] },
     "target": "ES2020",
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -11,9 +12,8 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src", "tests"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
