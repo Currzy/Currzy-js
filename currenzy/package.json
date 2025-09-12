@@ -1,6 +1,6 @@
 {
   "name": "currenzy-lib",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Universal currency rates & converter with providers (CBR, ECB, etc.)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
