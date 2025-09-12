@@ -1,7 +1,6 @@
 // tests/providers/cbrf.test.ts
 import { describe, it, expect } from 'vitest';
 import { Currenzy } from '@src/index';
-import chalk from 'chalk';
 
 describe('CBRF Provider', () => {
     it('fetches rates, checks individual rates and performs conversions', async () => {
@@ -9,17 +8,17 @@ describe('CBRF Provider', () => {
         await api.updateRates();
 
         // ===== Все курсы относительно USD =====
-        console.log(chalk.cyan('\n===== Все курсы относительно USD ====='));
+        console.log('\n===== Все курсы относительно USD =====');
         const ratesToUSD = api.getAllRatesTo('USD');
         console.table(ratesToUSD);
 
         // ===== Все курсы относительно RUB =====
-        console.log(chalk.cyan('\n===== Все курсы относительно RUB ====='));
+        console.log('\n===== Все курсы относительно RUB =====');
         const ratesToRUB = api.getAllRatesTo('RUB');
         console.table(ratesToRUB);
 
         // ===== Проверка отдельных курсов =====
-        console.log(chalk.cyan('===== Проверка отдельных курсов ====='));
+        console.log('===== Проверка отдельных курсов =====');
         const testCurrencies = ['USD', 'EUR', 'RUB', 'AMD', 'GBP', 'JPY'];
         for (const code of testCurrencies) {
             const rate = api.getRate(code);
@@ -28,7 +27,7 @@ describe('CBRF Provider', () => {
         }
 
         // ===== Проверка конверсий =====
-        console.log(chalk.cyan('\n===== Проверка конверсий ====='));
+        console.log('\n===== Проверка конверсий =====');
         const conversionTests: [number, string, string][] = [
             [100, 'USD', 'RUB'],
             [1000, 'RUB', 'USD'],
@@ -50,7 +49,7 @@ describe('CBRF Provider', () => {
         }
 
         // ===== Последнее обновление =====
-        console.log(chalk.cyan('\n===== Последнее обновление ====='));
+        console.log('\n===== Последнее обновление =====');
         console.log(api.getLastUpdate());
     });
 });

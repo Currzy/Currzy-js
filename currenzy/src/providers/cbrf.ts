@@ -22,62 +22,12 @@ interface CbrfData {
 }
 
 export const AVAILABLE_CURRENCIES = [
-  "AUD",
-  "AZN",
-  "DZD",
-  "GBP",
-  "AMD",
-  "BHD",
-  "BYN",
-  "BGN",
-  "BOB",
-  "BRL",
-  "HUF",
-  "VND",
-  "HKD",
-  "GEL",
-  "DKK",
-  "AED",
-  "USD",
-  "EUR",
-  "EGP",
-  "INR",
-  "IDR",
-  "IRR",
-  "KZT",
-  "CAD",
-  "QAR",
-  "KGS",
-  "CNY",
-  "CUP",
-  "MDL",
-  "MNT",
-  "NGN",
-  "NZD",
-  "NOK",
-  "OMR",
-  "PLN",
-  "SAR",
-  "RON",
-  "XDR",
-  "SGD",
-  "TJS",
-  "THB",
-  "BDT",
-  "TRY",
-  "TMT",
-  "UZS",
-  "UAH",
-  "CZK",
-  "SEK",
-  "CHF",
-  "ETB",
-  "RSD",
-  "ZAR",
-  "KRW",
-  "JPY",
-  "MMK",
-  "RUB",
+  "AUD","AZN","DZD","GBP","AMD","BHD","BYN","BGN","BOB","BRL",
+  "HUF","VND","HKD","GEL","DKK","AED","USD","EUR","EGP","INR",
+  "IDR","IRR","KZT","CAD","QAR","KGS","CNY","CUP","MDL","MNT",
+  "NGN","NZD","NOK","OMR","PLN","SAR","RON","XDR","SGD","TJS",
+  "THB","BDT","TRY","TMT","UZS","UAH","CZK","SEK","CHF","ETB",
+  "RSD","ZAR","KRW","JPY","MMK","RUB"
 ] as const;
 
 export type CurrencyCode = (typeof AVAILABLE_CURRENCIES)[number];
@@ -89,7 +39,7 @@ export function assertCurrency(code: string): asserts code is CurrencyCode {
 }
 
 export class CbrfProvider {
-  private url = "https://www.cbr.ru/scripts/XML_daily.asp";
+  private url = "https://api.allorigins.win/raw?url=https://www.cbr.ru/scripts/XML_daily.asp";
   private rates: Record<CurrencyCode, Rate> = {} as Record<CurrencyCode, Rate>;
   private lastUpdate: Date | null = null;
 
@@ -123,6 +73,7 @@ export class CbrfProvider {
       }
     }
 
+    // Добавляем рубль
     this.rates["RUB"] = {
       code: "RUB",
       nominal: 1,
@@ -160,7 +111,6 @@ export class CbrfProvider {
 
     for (const code of this.availableCurrencies) {
       if (code === baseCode) continue;
-
       result[code] = this.getRate(code, baseCode);
     }
 
