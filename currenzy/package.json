@@ -1,6 +1,6 @@
 {
   "name": "currenzy-lib",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Universal currency rates & converter with providers (CBR, ECB, etc.)",
   "type": "module",
   "main": "dist/index.js",
@@ -8,12 +8,16 @@
   "scripts": {
     "build": "tsc",
     "test": "vitest",
+    "prepublishOnly": "npm run build",
     "lint": "eslint ./src --fix && prettier --check ./src"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vahe-sargsyan2005/Currenzy"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "currency",
     "exchange-rates",
