@@ -1,0 +1,42 @@
+{
+  "name": "currenzy",
+  "version": "0.1.0",
+  "description": "Universal currency rates & converter with providers (CBR, ECB, etc.)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-node tests/index.test.ts",
+    "lint": "eslint src --fix && prettier --check src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourname/currenzy.git"
+  },
+  "keywords": [
+    "currency",
+    "exchange-rates",
+    "cbrf",
+    "ecb",
+    "converter",
+    "currenzy"
+  ],
+  "author": "Vahe w33bv.gl@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourname/currenzy/issues"
+  },
+  "homepage": "https://github.com/yourname/currenzy#readme",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "fast-xml-parser": "^4.4.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "@types/node": "^22.7.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
