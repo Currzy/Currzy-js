@@ -18,7 +18,9 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+        working-directory: ./currenzy
       - run: npm test
+        working-directory: ./currenzy
 
   publish-npm:
     needs: build
@@ -30,6 +32,8 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
       - run: npm ci
+        working-directory: ./currenzy
       - run: npm publish
+        working-directory: ./currenzy
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
