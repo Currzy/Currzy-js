@@ -1,6 +1,6 @@
 {
   "name": "currenzy-lib",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Universal currency rates & converter with providers (CBR, ECB, etc.)",
   "type": "module",
   "main": "dist/index.js",
@@ -34,7 +34,7 @@
   "homepage": "https://github.com/yourname/currenzy#readme",
   "dependencies": {
     "fast-xml-parser": "^4.4.0",
-    "node-fetch": "^3.3.2"
+    "ofetch": "^1.4.1"
   },
   "devDependencies": {
     "@types/node": "^22.7.6",

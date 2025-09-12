@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import { ofetch } from "ofetch";
 import { XMLParser } from "fast-xml-parser";
 
 export interface Rate {
@@ -96,15 +96,14 @@ export class CbrfProvider {
   public availableCurrencies: readonly CurrencyCode[] = AVAILABLE_CURRENCIES;
 
   async fetchRates(): Promise<void> {
-    const res = await fetch(this.url);
-    const xml = await res.text();
+    const xml = await ofetch(this.url, { responseType: "text" });
 
     const parser = new XMLParser();
     const data: CbrfData = parser.parse(xml) as CbrfData;
 
     const items: CbrfValute[] = Array.isArray(data.ValCurs.Valute)
-      ? data.ValCurs.Valute
-      : [data.ValCurs.Valute];
+        ? data.ValCurs.Valute
+        : [data.ValCurs.Valute];
     this.rates = {} as Record<CurrencyCode, Rate>;
 
     for (const item of items) {
