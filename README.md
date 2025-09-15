@@ -1,7 +1,7 @@
 # Currenzy
 
 <p align="center">
-  ![Logo](./web/logo.png)
+  ![Logo](https://raw.githubusercontent.com/vahe-sargsyan2005/Currenzy/refs/heads/main/web/logo.png)
   <br>
   **Currenzy — currency library**
 </p>
