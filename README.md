@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="200" height="200" src="https://raw.githubusercontent.com/vahe-sargsyan2005/Currenzy/refs/heads/main/web/currenzy.png" alt="Currenzy Logo"/>
+  <img width="100" height="100" src="https://raw.githubusercontent.com/vahe-sargsyan2005/Currenzy/refs/heads/main/web/currenzy.png" alt="Currenzy Logo"/>
 </p>
 <div align="center">
   <h1>Currenzy — currency library</h1>
