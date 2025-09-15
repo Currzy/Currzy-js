@@ -1,0 +1,341 @@
+{
+  "rates": {
+    "AUD": {
+      "code": "AUD",
+      "nominal": 1,
+      "value": 56.1801,
+      "vunitRate": 56.1801
+    },
+    "AZN": {
+      "code": "AZN",
+      "nominal": 1,
+      "value": 49.6352,
+      "vunitRate": 49.6352
+    },
+    "DZD": {
+      "code": "DZD",
+      "nominal": 100,
+      "value": 65.0804,
+      "vunitRate": 0.6508039999999999
+    },
+    "GBP": {
+      "code": "GBP",
+      "nominal": 1,
+      "value": 114.3937,
+      "vunitRate": 114.3937
+    },
+    "AMD": {
+      "code": "AMD",
+      "nominal": 100,
+      "value": 22.0043,
+      "vunitRate": 0.22004300000000002
+    },
+    "BHD": {
+      "code": "BHD",
+      "nominal": 1,
+      "value": 224.3659,
+      "vunitRate": 224.3659
+    },
+    "BYN": {
+      "code": "BYN",
+      "nominal": 1,
+      "value": 27.38,
+      "vunitRate": 27.38
+    },
+    "BGN": {
+      "code": "BGN",
+      "nominal": 1,
+      "value": 50.4121,
+      "vunitRate": 50.4121
+    },
+    "BOB": {
+      "code": "BOB",
+      "nominal": 1,
+      "value": 12.2113,
+      "vunitRate": 12.2113
+    },
+    "BRL": {
+      "code": "BRL",
+      "nominal": 1,
+      "value": 15.668,
+      "vunitRate": 15.668
+    },
+    "HUF": {
+      "code": "HUF",
+      "nominal": 100,
+      "value": 25.2483,
+      "vunitRate": 0.252483
+    },
+    "VND": {
+      "code": "VND",
+      "nominal": 10000,
+      "value": 33.4628,
+      "vunitRate": 0.00334628
+    },
+    "HKD": {
+      "code": "HKD",
+      "nominal": 1,
+      "value": 10.8611,
+      "vunitRate": 10.8611
+    },
+    "GEL": {
+      "code": "GEL",
+      "nominal": 1,
+      "value": 31.3225,
+      "vunitRate": 31.3225
+    },
+    "DKK": {
+      "code": "DKK",
+      "nominal": 1,
+      "value": 13.2327,
+      "vunitRate": 13.2327
+    },
+    "AED": {
+      "code": "AED",
+      "nominal": 1,
+      "value": 22.9761,
+      "vunitRate": 22.9761
+    },
+    "USD": {
+      "code": "USD",
+      "nominal": 1,
+      "value": 84.3798,
+      "vunitRate": 84.3798
+    },
+    "EUR": {
+      "code": "EUR",
+      "nominal": 1,
+      "value": 99.3304,
+      "vunitRate": 99.3304
+    },
+    "EGP": {
+      "code": "EGP",
+      "nominal": 10,
+      "value": 17.5057,
+      "vunitRate": 1.7505700000000002
+    },
+    "INR": {
+      "code": "INR",
+      "nominal": 100,
+      "value": 95.5814,
+      "vunitRate": 0.955814
+    },
+    "IDR": {
+      "code": "IDR",
+      "nominal": 10000,
+      "value": 51.2386,
+      "vunitRate": 0.00512386
+    },
+    "IRR": {
+      "code": "IRR",
+      "nominal": 100000,
+      "value": 14.5407,
+      "vunitRate": 0.00014540699999999999
+    },
+    "KZT": {
+      "code": "KZT",
+      "nominal": 100,
+      "value": 15.6581,
+      "vunitRate": 0.156581
+    },
+    "CAD": {
+      "code": "CAD",
+      "nominal": 1,
+      "value": 60.9504,
+      "vunitRate": 60.9504
+    },
+    "QAR": {
+      "code": "QAR",
+      "nominal": 1,
+      "value": 23.1813,
+      "vunitRate": 23.1813
+    },
+    "KGS": {
+      "code": "KGS",
+      "nominal": 100,
+      "value": 96.4892,
+      "vunitRate": 0.964892
+    },
+    "CNY": {
+      "code": "CNY",
+      "nominal": 1,
+      "value": 11.8263,
+      "vunitRate": 11.8263
+    },
+    "CUP": {
+      "code": "CUP",
+      "nominal": 10,
+      "value": 35.1583,
+      "vunitRate": 3.51583
+    },
+    "MDL": {
+      "code": "MDL",
+      "nominal": 10,
+      "value": 50.588,
+      "vunitRate": 5.0588
+    },
+    "MNT": {
+      "code": "MNT",
+      "nominal": 1000,
+      "value": 23.4728,
+      "vunitRate": 0.0234728
+    },
+    "NGN": {
+      "code": "NGN",
+      "nominal": 1000,
+      "value": 56.1734,
+      "vunitRate": 0.0561734
+    },
+    "NZD": {
+      "code": "NZD",
+      "nominal": 1,
+      "value": 50.379,
+      "vunitRate": 50.379
+    },
+    "NOK": {
+      "code": "NOK",
+      "nominal": 10,
+      "value": 84.9105,
+      "vunitRate": 8.49105
+    },
+    "OMR": {
+      "code": "OMR",
+      "nominal": 1,
+      "value": 219.4533,
+      "vunitRate": 219.4533
+    },
+    "PLN": {
+      "code": "PLN",
+      "nominal": 1,
+      "value": 23.2131,
+      "vunitRate": 23.2131
+    },
+    "SAR": {
+      "code": "SAR",
+      "nominal": 1,
+      "value": 22.5013,
+      "vunitRate": 22.5013
+    },
+    "RON": {
+      "code": "RON",
+      "nominal": 1,
+      "value": 19.5062,
+      "vunitRate": 19.5062
+    },
+    "XDR": {
+      "code": "XDR",
+      "nominal": 1,
+      "value": 115.5514,
+      "vunitRate": 115.5514
+    },
+    "SGD": {
+      "code": "SGD",
+      "nominal": 1,
+      "value": 65.7932,
+      "vunitRate": 65.7932
+    },
+    "TJS": {
+      "code": "TJS",
+      "nominal": 10,
+      "value": 88.6901,
+      "vunitRate": 8.86901
+    },
+    "THB": {
+      "code": "THB",
+      "nominal": 10,
+      "value": 26.625,
+      "vunitRate": 2.6625
+    },
+    "BDT": {
+      "code": "BDT",
+      "nominal": 100,
+      "value": 69.3095,
+      "vunitRate": 0.693095
+    },
+    "TRY": {
+      "code": "TRY",
+      "nominal": 10,
+      "value": 20.4565,
+      "vunitRate": 2.0456499999999997
+    },
+    "TMT": {
+      "code": "TMT",
+      "nominal": 1,
+      "value": 24.1085,
+      "vunitRate": 24.1085
+    },
+    "UZS": {
+      "code": "UZS",
+      "nominal": 10000,
+      "value": 67.7894,
+      "vunitRate": 0.00677894
+    },
+    "UAH": {
+      "code": "UAH",
+      "nominal": 10,
+      "value": 20.439,
+      "vunitRate": 2.0439
+    },
+    "CZK": {
+      "code": "CZK",
+      "nominal": 10,
+      "value": 40.6669,
+      "vunitRate": 4.0666899999999995
+    },
+    "SEK": {
+      "code": "SEK",
+      "nominal": 10,
+      "value": 90.0313,
+      "vunitRate": 9.00313
+    },
+    "CHF": {
+      "code": "CHF",
+      "nominal": 1,
+      "value": 105.8187,
+      "vunitRate": 105.8187
+    },
+    "ETB": {
+      "code": "ETB",
+      "nominal": 100,
+      "value": 58.7533,
+      "vunitRate": 0.5875330000000001
+    },
+    "RSD": {
+      "code": "RSD",
+      "nominal": 100,
+      "value": 84.4496,
+      "vunitRate": 0.844496
+    },
+    "ZAR": {
+      "code": "ZAR",
+      "nominal": 10,
+      "value": 48.4866,
+      "vunitRate": 4.848660000000001
+    },
+    "KRW": {
+      "code": "KRW",
+      "nominal": 1000,
+      "value": 60.7311,
+      "vunitRate": 0.060731099999999996
+    },
+    "JPY": {
+      "code": "JPY",
+      "nominal": 100,
+      "value": 57.2804,
+      "vunitRate": 0.572804
+    },
+    "MMK": {
+      "code": "MMK",
+      "nominal": 1000,
+      "value": 40.1809,
+      "vunitRate": 0.0401809
+    },
+    "RUB": {
+      "code": "RUB",
+      "nominal": 1,
+      "value": 1,
+      "vunitRate": 1
+    }
+  },
+  "lastUpdate": "2025-09-15T05:45:59.120Z"
+}

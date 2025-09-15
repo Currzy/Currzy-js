@@ -12,15 +12,4 @@ export default defineConfig([
         splitting: false,
         external: ['fast-xml-parser', 'ofetch'],
     },
-    {
-        entry: ['src/index.ts'],
-        outDir: 'dist',
-        format: ['iife'],
-        globalName: 'Currenzy',
-        minify: true,
-        sourcemap: false,
-        dts: false,
-        splitting: false,
-        external: [],
-    },
 ])

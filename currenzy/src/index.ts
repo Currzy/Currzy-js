@@ -10,23 +10,24 @@ export class Currenzy {
     else throw new Error("Unknown provider");
   }
 
-  updateRates() {
-    return this.provider.fetchRates();
+  async getRate(code: string) {
+    return await this.provider.getRate(code);
   }
 
-  getRate(code: string) {
-    return this.provider.getRate(code);
+  async convert(amount: number, from: string, to: string) {
+    return await this.provider.convert(amount, from, to);
   }
 
-  convert(amount: number, from: string, to: string) {
-    return this.provider.convert(amount, from, to);
+  async getAllRatesTo(code?: string): Promise<Record<string, number | null>> {
+    return await this.provider.getAllRates(code);
   }
 
-  getAllRatesTo(code?: string): Record<string, number | null> {
-    return this.provider.getAllRates(code);
+  async clearCache(): Promise<void> {
+    return this.provider.clearCache();
   }
 
-  getLastUpdate() {
+  getLastUpdate(): Date | null {
     return this.provider.getLastUpdate();
   }
 }
+

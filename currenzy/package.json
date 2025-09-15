@@ -1,16 +1,15 @@
 {
   "name": "currenzy-lib",
-  "version": "0.3.0",
-  "description": "Universal currency rates & converter with providers (CBR, ECB, etc.)",
+  "version": "0.4.0",
+  "description": "Free, open-source library for fetching, managing, and converting up-to-date currency rates from multiple reliable sources with the ability to easily choose the source.",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.cjs",
-  "browser": "dist/index.global.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsup",
     "test": "vitest",
-    "lint": "eslint ./src --fix && prettier --check ./src"
+    "lint": "eslint ./src --fix"
   },
   "repository": {
     "type": "git",
@@ -41,9 +40,6 @@
     "@types/node": "^22.7.6",
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "eslint": "^8.0.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
-    "prettier": "^3.0.0",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
