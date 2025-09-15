@@ -1,9 +1,9 @@
 <p align="center">
   <img width="200" height="200" src="https://raw.githubusercontent.com/vahe-sargsyan2005/Currenzy/refs/heads/main/web/logo.png" alt="Currenzy Logo"/>
 </p>
-<p align="center">
-  <strong style="font-size: 38px;">Currenzy — currency library</strong>
-</p>
+<div align="center">
+  <h1>Currenzy — currency library</h1>
+</div>
 
 💱 **Free, open-source library** for fetching, managing, and converting up-to-date currency rates from multiple reliable sources, with the ability to easily choose your provider.
 
