@@ -1,145 +1,46 @@
 import { ofetch } from "ofetch";
 import { XMLParser } from "fast-xml-parser";
-import fs from "fs/promises";
-import path from "path";
-
-export interface Rate {
-  code: string;
-  nominal: number;
-  value: number;
-  vunitRate: number;
-}
-
-interface CbrfValute {
-  CharCode: string;
-  Nominal: string;
-  Name: string;
-  Value: string;
-}
-
-interface CbrfData {
-  ValCurs: {
-    Valute: CbrfValute[] | CbrfValute;
-  };
-}
-
-export const AVAILABLE_CURRENCIES = [
-  "AUD",
-  "AZN",
-  "DZD",
-  "GBP",
-  "AMD",
-  "BHD",
-  "BYN",
-  "BGN",
-  "BOB",
-  "BRL",
-  "HUF",
-  "VND",
-  "HKD",
-  "GEL",
-  "DKK",
-  "AED",
-  "USD",
-  "EUR",
-  "EGP",
-  "INR",
-  "IDR",
-  "IRR",
-  "KZT",
-  "CAD",
-  "QAR",
-  "KGS",
-  "CNY",
-  "CUP",
-  "MDL",
-  "MNT",
-  "NGN",
-  "NZD",
-  "NOK",
-  "OMR",
-  "PLN",
-  "SAR",
-  "RON",
-  "XDR",
-  "SGD",
-  "TJS",
-  "THB",
-  "BDT",
-  "TRY",
-  "TMT",
-  "UZS",
-  "UAH",
-  "CZK",
-  "SEK",
-  "CHF",
-  "ETB",
-  "RSD",
-  "ZAR",
-  "KRW",
-  "JPY",
-  "MMK",
-  "RUB",
-] as const;
-
-export type CurrencyCode = (typeof AVAILABLE_CURRENCIES)[number];
-
-export function assertCurrency(code: string): asserts code is CurrencyCode {
-  if (!AVAILABLE_CURRENCIES.includes(code as CurrencyCode)) {
-    throw new Error(`Unknown currency: ${code}`);
-  }
-}
+import { createCacheDriver } from "@src/cache";
+import {
+  Rate,
+  CurrencyCode,
+  AVAILABLE_CURRENCIES,
+  assertCurrency,
+  CbrfValute,
+  CbrfData,
+  CbrfCache,
+} from "@src/providers/cbrf/types";
 
 export class CbrfProvider {
   private url =
       "https://api.allorigins.win/raw?url=https://www.cbr.ru/scripts/XML_daily.asp";
+
   private rates: Record<CurrencyCode, Rate> = {} as Record<CurrencyCode, Rate>;
   private lastUpdate: Date | null = null;
-  private cacheFile = path.resolve(".cbrf-cache.json");
   private initialized = false;
   private cacheTTL = 1000 * 60 * 60;
+  private cache = createCacheDriver<CbrfCache>("cbrf");
 
   public availableCurrencies: readonly CurrencyCode[] = AVAILABLE_CURRENCIES;
 
   private async loadCache() {
-    try {
-      const raw = await fs.readFile(this.cacheFile, "utf-8");
-      const parsed = JSON.parse(raw);
-      this.rates = parsed.rates;
-      this.lastUpdate = parsed.lastUpdate ? new Date(parsed.lastUpdate) : null;
+    const data = await this.cache.load();
+    if (data) {
+      this.rates = data.payload.rates;
+      this.lastUpdate = data.lastUpdate ? new Date(data.lastUpdate) : null;
       this.initialized = true;
-      console.log("Cache loaded successfully.");
-    } catch {
-      console.log("No cache found or it is corrupted.");
     }
   }
 
   private async saveCache() {
-    try {
-      await fs.writeFile(
-          this.cacheFile,
-          JSON.stringify(
-              {
-                rates: this.rates,
-                lastUpdate: this.lastUpdate,
-              },
-              null,
-              2
-          ),
-          "utf-8"
-      );
-    } catch (e) {
-      console.error("Не удалось сохранить кеш:", e);
-    }
+    await this.cache.save({
+      payload: { rates: this.rates },
+      lastUpdate: this.lastUpdate ? this.lastUpdate.toISOString() : null,
+    });
   }
 
   public async clearCache() {
-    try {
-      await fs.unlink(this.cacheFile);
-      console.log("Cache file deleted.");
-    } catch {
-      console.log("Cache file does not exist.");
-    }
+    await this.cache.clear();
     this.rates = {} as Record<CurrencyCode, Rate>;
     this.lastUpdate = null;
     this.initialized = false;
@@ -162,12 +63,7 @@ export class CbrfProvider {
         const value = parseFloat(item.Value.replace(",", "."));
         const vunitRate = value / nominal;
 
-        const rate: Rate = {
-          code: item.CharCode,
-          nominal,
-          value,
-          vunitRate,
-        };
+        const rate: Rate = { code: item.CharCode, nominal, value, vunitRate };
 
         if (this.availableCurrencies.includes(rate.code as CurrencyCode)) {
           this.rates[rate.code as CurrencyCode] = rate;
@@ -179,24 +75,22 @@ export class CbrfProvider {
       this.initialized = true;
       await this.saveCache();
     } catch (e) {
-      console.error("Error fetching CBR rates:", e);
+      console.error("Error fetching CBRF rates:", e);
       if (!this.initialized) {
         await this.loadCache();
-        if (!this.initialized) throw new Error("No CBR data available and cache is missing.");
+        if (!this.initialized) throw new Error("No CBRF data and no cache");
       }
     }
   }
 
   private async ensureInitialized(): Promise<void> {
-    if (!this.initialized) {
-      await this.loadCache();
-    }
+    if (!this.initialized) await this.loadCache();
 
-    const cacheExpired =
+    const expired =
         this.lastUpdate === null ||
         new Date().getTime() - this.lastUpdate.getTime() > this.cacheTTL;
 
-    if (!this.initialized || cacheExpired) {
+    if (!this.initialized || expired) {
       await this.fetchRates();
     }
   }
@@ -223,17 +117,15 @@ export class CbrfProvider {
     return (amount * fromRateInRub) / toRateInRub;
   }
 
-  async getAllRates(
-      baseCode: string = "USD"
-  ): Promise<Record<CurrencyCode, number>> {
+  async getAllRates(base: string = "USD"): Promise<Record<CurrencyCode, number>> {
     await this.ensureInitialized();
-    assertCurrency(baseCode);
+    assertCurrency(base);
 
     const result: Partial<Record<CurrencyCode, number>> = {};
 
     for (const code of this.availableCurrencies) {
-      if (code === baseCode) continue;
-      result[code] = await this.getRate(code, baseCode);
+      if (code === base) continue;
+      result[code] = await this.getRate(code, base);
     }
 
     return result as Record<CurrencyCode, number>;

@@ -5,10 +5,10 @@ import { Currenzy } from '../../src'
 describe('CBRF Provider', () => {
     it('fetches rates, checks individual rates and performs conversions', async () => {
         const api = new Currenzy('cbrf');
-        await api.clearCache();
+
         // ===== Все курсы относительно USD =====
         console.log("\n===== Все курсы относительно USD =====");
-        const ratesToUSD = await api.getAllRatesTo('USD'); // теперь работает
+        const ratesToUSD = await api.getAllRatesTo('USD');
         console.table(ratesToUSD);
 
         // ===== Все курсы относительно RUB =====
@@ -36,6 +36,7 @@ describe('CBRF Provider', () => {
             [123, 'GBP', 'JPY'],
             [100, 'USD', 'EUR'],
             [1, 'AMD', 'RUB'],
+            [8000, 'RUB', 'USD']
         ];
 
         for (const [amount, from, to] of conversionTests) {

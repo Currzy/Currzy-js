@@ -52,6 +52,12 @@ jobs:
         run: npm run build
         working-directory: ./currenzy
 
+      - name: Add README and LICENSE
+        run: |
+          cp ../README.md ./README.md
+          cp ../LICENSE ./LICENSE
+        working-directory: ./currenzy
+
       - name: Publish to npm
         run: npm publish
         working-directory: ./currenzy
