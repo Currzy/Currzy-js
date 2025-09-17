@@ -36,7 +36,8 @@ describe('CBRF Provider', () => {
             [123, 'GBP', 'JPY'],
             [100, 'USD', 'EUR'],
             [1, 'AMD', 'RUB'],
-            [8000, 'RUB', 'USD']
+            [8000, 'RUB', 'USD'],
+            [1, 'RUB', 'JPY']
         ];
 
         for (const [amount, from, to] of conversionTests) {
