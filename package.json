@@ -1,5 +1,5 @@
 {
-  "name": "currenzy-lib",
+  "name": "currzy",
   "version": "0.7.0",
   "description": "Free, open-source library for fetching, managing, and converting up-to-date currency rates from multiple reliable sources with the ability to easily choose the source.",
   "type": "module",
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsup",
     "test": "vitest",
-    "lint": "eslint ./src --fix"
+    "lint": "eslint src --fix"
   },
   "repository": {
     "type": "git",

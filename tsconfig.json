@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./currenzy",
     "paths": {
       "@src": ["src"],
       "@src/*": ["src/*"]
@@ -17,6 +17,8 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src"],
+  "include": [
+    "src"
+  ],
   "exclude": ["node_modules", "dist"]
 }

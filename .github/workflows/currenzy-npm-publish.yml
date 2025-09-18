@@ -22,15 +22,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: ./currenzy
 
       - name: Run ESLint & Prettier
         run: npm run lint
-        working-directory: ./currenzy
 
       - name: Run Tests
         run: npm test
-        working-directory: ./currenzy
 
   publish-npm:
     needs: build
@@ -46,20 +43,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: ./currenzy
 
       - name: Build package
         run: npm run build
-        working-directory: ./currenzy
-
-      - name: Add README and LICENSE
-        run: |
-          cp ../README.md ./README.md
-          cp ../LICENSE ./LICENSE
-        working-directory: ./currenzy
 
       - name: Publish to npm
         run: npm publish
-        working-directory: ./currenzy
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
