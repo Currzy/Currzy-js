@@ -1,5 +1,4 @@
 .idea
-currenzy/node_modules
-currenzy/dist
-currenzy/life
-currenzy/cache
+node_modules
+dist
+cache

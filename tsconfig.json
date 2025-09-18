@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./currenzy",
+    "baseUrl": ".",
     "paths": {
       "@src": ["src"],
       "@src/*": ["src/*"]

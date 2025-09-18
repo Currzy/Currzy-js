@@ -1,6 +1,6 @@
 {
   "name": "currzy",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "description": "Free, open-source library for fetching, managing, and converting up-to-date currency rates from multiple reliable sources with the ability to easily choose the source.",
   "type": "module",
   "main": "dist/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vahe-sargsyan2005/Currenzy"
+    "url": "git+https://github.com/Currzy/Currzy-js"
   },
   "files": [
     "dist"
@@ -24,14 +24,14 @@
     "cbrf",
     "ecb",
     "converter",
-    "currenzy"
+    "currzy"
   ],
   "author": "Vahe Sargsyan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vahe-sargsyan2005/Currenzy/issues"
+    "url": "https://github.com/Currzy/Currzy-js/issues"
   },
-  "homepage": "https://github.com/vahe-sargsyan2005/Currenzy/blob/main/README.md",
+  "homepage": "https://github.com/vahe-sargsyan2005/Currzy",
   "dependencies": {
     "fast-xml-parser": "^4.4.0",
     "ofetch": "^1.4.1"
