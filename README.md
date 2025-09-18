@@ -16,7 +16,7 @@
 
 ## Installation
 ```bash
-npm i currenzy-lib
+npm i currzy
 ```
 
 ## Usage
