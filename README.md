@@ -4,7 +4,7 @@
 
 💱 **Free, open-source library** for fetching, managing, and converting up-to-date currency rates from multiple reliable sources, with the ability to easily choose your provider.
 
-> 📚 For more detailed documentation and advanced usage, visit [Currenzy Docs](https://your-docs-link-here.com).
+> 📚 For more detailed documentation and advanced usage, visit [Currzy Docs](https//).
 
 ## Features
 
@@ -21,7 +21,7 @@ npm i currenzy-lib
 
 ## Usage
 ```javascript
-import { Currenzy } from "currenzy-lib";
+import { Currenzy } from "currzy";
 
 async function main() {
   // Initialize with a provider

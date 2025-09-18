@@ -1,6 +1,6 @@
 {
   "name": "currzy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Free, open-source library for fetching, managing, and converting up-to-date currency rates from multiple reliable sources with the ability to easily choose the source.",
   "type": "module",
   "main": "dist/index.js",

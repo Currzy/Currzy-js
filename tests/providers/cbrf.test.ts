@@ -1,10 +1,10 @@
 // tests/providers/cbrf.test.ts
 import { describe, it, expect } from 'vitest'
-import { Currenzy } from '../../src'
+import { Currzy } from '../../src'
 
 describe('CBRF Provider', () => {
     it('fetches rates, checks individual rates and performs conversions', async () => {
-        const api = new Currenzy('cbrf');
+        const api = new Currzy('cbrf');
 
         // ===== Все курсы относительно USD =====
         console.log("\n===== Все курсы относительно USD =====");

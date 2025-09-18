@@ -2,7 +2,7 @@ import { CbrfProvider } from "@src/providers/cbrf";
 
 export { CbrfProvider };
 
-export class Currenzy {
+export class Currzy {
   provider: CbrfProvider;
 
   constructor(providerName: string) {
