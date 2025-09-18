@@ -4,7 +4,7 @@
 
 💱 **Free, open-source library** for fetching, managing, and converting up-to-date currency rates from multiple reliable sources, with the ability to easily choose your provider.
 
-> 📚 For more detailed documentation and advanced usage, visit [Currzy Docs](https//).
+> 📚 For more detailed documentation and advanced usage, visit [Currzy Docs](https://github.com/Currzy).
 
 ## Features
 
@@ -21,29 +21,29 @@ npm i currenzy-lib
 
 ## Usage
 ```javascript
-import { Currenzy } from "currzy";
+import { Currzy } from "currzy";
 
 async function main() {
   // Initialize with a provider
-  const currenzy = new Currenzy("cbrf");
+  const currzy = new Currzy("cbrf");
 
   // Get the rate of EUR to USD
-  const rate = await currenzy.getRate("EUR", "USD");
+  const rate = await currzy.getRate("EUR", "USD");
   console.log(`1 USD = ${rate.toFixed(4)} EUR`);
 
   // Convert 100 USD to EUR
-  const converted = await currenzy.convert(100, "USD", "EUR");
+  const converted = await currzy.convert(100, "USD", "EUR");
   console.log(`100 USD = ${converted.toFixed(2)} EUR`);
 
   // Get all rates relative to USD
-  const allRates = await currenzy.getAllRatesTo("USD");
+  const allRates = await currzy.getAllRatesTo("USD");
   console.log(allRates);
 
   // Get last update date
-  console.log("Last update:", currenzy.getLastUpdate());
+  console.log("Last update:", currzy.getLastUpdate());
 
   // Clear cache manually
-  await currenzy.clearCache();
+  await currzy.clearCache();
   console.log("Cache cleared.");
 }
 
@@ -53,7 +53,7 @@ main();
 ## Notes
 - Each provider may have its own methods
 - Rates are cached locally for <strong>1 hour</strong> to minimize API requests.
-- Cache can be cleared manually via ```currenzy.clearCache()```
+- Cache can be cleared manually via ```currzy.clearCache()```
 
 ## Supported Currencies (CbrfProvider)
 | AUD | AZN | DZD | GBP | AMD | BHD | BYN | BGN | BOB | BRL |
