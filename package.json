@@ -41,7 +41,7 @@
   "bugs": {
     "url": "https://github.com/Currzy/Currzy-js/issues"
   },
-  "homepage": "https://github.com/vahe-sargsyan2005/Currzy",
+  "homepage": "https://github.com/Currzy/Currzy-js",
   "dependencies": {
     "fast-xml-parser": "^4.4.0",
     "ofetch": "^1.4.1"
